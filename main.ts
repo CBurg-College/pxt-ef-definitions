@@ -130,6 +130,15 @@ enum Track4 {
     State_15,
 }
 
+enum Spin {
+    //% block="clockwise"
+    //% block.loc.nl="rechtsom"
+    Clockwise,
+    //% block="anti-clockwise"
+    //% block.loc.nl="linksom"
+    AntiClockwise
+}
+
 enum Pace {
     //% block="slow"
     //% block.loc.nl="langzaam"
