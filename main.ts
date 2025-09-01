@@ -2,10 +2,10 @@ enum Digital {
     //% block="low"
     //% block.loc.nl="laag"
     Low,
-}    //% block="high"
+    //% block="high"
     //% block.loc.nl="hoog"
     High,
-
+}
 
 enum RJPort {
     //% block="port J1"
