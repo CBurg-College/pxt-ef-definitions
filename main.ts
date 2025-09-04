@@ -7,28 +7,6 @@ enum Digital {
     High,
 }
 
-enum RJPort {
-    //% block="port J1"
-    //% bloc.loc.nl="poort J1"
-    J1,
-    //% block="port J2"
-    //% bloc.loc.nl="poort J2"
-    J2,
-    //% block="port J3"
-    //% bloc.loc.nl="poort J3"
-    J3,
-    //% block="port J4"
-    //% bloc.loc.nl="poort J4"
-    J4,
-}
-
-enum RJLine {
-    //% block="line A"
-    LA,
-    //% block="line B"
-    LB,
-}
-
 enum Motor {
     //% block="M1"
     M1,
@@ -149,4 +127,65 @@ enum Pace {
     //% block="fast"
     //% block.loc.nl="snel"
     Fast,
+}
+
+// RJPort MODULE
+
+// the arrays AnalogRJ and DigitalRJ are valid
+// for both NezhaBrick and NezhaPro (V2)
+
+let AnalogRJ = [AnalogPin.P8, AnalogPin.P1,
+AnalogPin.P12, AnalogPin.P2,
+AnalogPin.P14, AnalogPin.P13,
+AnalogPin.P16, AnalogPin.P15]
+
+let DigitalRJ = [DigitalPin.P8, DigitalPin.P1,
+DigitalPin.P12, DigitalPin.P2,
+DigitalPin.P14, DigitalPin.P13,
+DigitalPin.P16, DigitalPin.P15]
+
+enum RJPort {
+    //% block="port J1"
+    //% bloc.loc.nl="poort J1"
+    J1,
+    //% block="port J2"
+    //% bloc.loc.nl="poort J2"
+    J2,
+    //% block="port J3"
+    //% bloc.loc.nl="poort J3"
+    J3,
+    //% block="port J4"
+    //% bloc.loc.nl="poort J4"
+    J4,
+}
+
+enum RJLine {
+    //% block="line A"
+    LA,
+    //% block="line B"
+    LB,
+}
+
+function analogPin(port: RJPort, line: RJLine): number {
+    return AnalogRJ[port * 2 + line]
+}
+
+function digitalPin(port: RJPort, line: RJLine): number {
+    return DigitalRJ[port * 2 + line]
+}
+
+function analogRead(port: RJPort, line: RJLine): number {
+    return pins.analogReadPin(AnalogRJ[port * 2 + line])
+}
+
+function analogWrite(port: RJPort, line: RJLine, value: number) {
+    pins.analogWritePin(AnalogRJ[port * 2 + line], value)
+}
+
+function digitalRead(port: RJPort, line: RJLine): Digital {
+    return pins.digitalReadPin(DigitalRJ[port * 2 + line])
+}
+
+function digitalWrite(port: RJPort, line: RJLine, value: Digital) {
+    pins.digitalWritePin(DigitalRJ[port * 2 + line], value);
 }
